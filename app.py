@@ -1,6 +1,10 @@
 from flask import Flask, request, render_template, jsonify
+import sqlite3
+
+from pyparsing import col
 
 app = Flask(__name__)
+
 
 @app.route("/")
 def index():
@@ -46,3 +50,19 @@ def try_rest():
     print(name)
     response_json = {"response_json": request_json}
     return jsonify(response_json)
+
+
+
+@app.route("/sqlite")
+def sqlite():
+    con = sqlite3.connect('./test_db')
+    cur = con.cursor()
+    response = ""
+
+    for row in cur.execute("SELECT * FROM person"):
+        response += "{"
+        for column in row:
+            response += str(column) + ", "
+        response += "}"
+
+    return response

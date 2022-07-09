@@ -1,0 +1,42 @@
+Docker コマンドマニュアル
+
+・Dockerイメージのビルド
+    docker build --tag []
+
+・Dockerイメージの確認
+    docker images
+
+・イメージのタグ設定
+    docker tag イメージ名:[タグ名] ユーザー名/イメージ名:[タグ名]
+
+・イメージの削除
+    docker rmi イメージ名
+
+・コンテナの起動
+    docker run [オプション] イメージ名[:タグ名] [引数]
+
+    オプション
+        ・ -p [--publish] ホストマシンのport:コンテナのport
+            コンテナのportをホストマシンに公開
+        ・ -d
+            バックグラウンドで起動
+        ・--name ""
+            名前を付けて起動
+
+
+・稼働コンテナを表示
+    docker ps
+    
+    オプション
+        ・-a
+            すべて表示
+
+・コンテナの停止
+    docker stop コンテナ識別子
+
+・コンテナの再起動
+    docker restart コンテナ識別子
+    
+・コンテナの削除
+    docker rm コンテナ識別子
+
